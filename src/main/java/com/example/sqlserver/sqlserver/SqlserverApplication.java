@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -56,12 +57,40 @@ public class SqlserverApplication implements CommandLineRunner {
         productRepository.save(product2);
         productRepository.save(product3);*/
 
-        List<Product> products = productRepository.findAll();
+/*        List<Product> products = productRepository.findAll();
         for(Product product : products) {
             LOG.info("Products found: " + product.toString());
+        }*/
+
+/*        Product resultProduct = productRepository.findByType(("GENERAL"));
+        LOG.info("Found by type: " + resultProduct.toString());
+
+        List<Product> results = productRepository.findByDescriptionAndCategory("This is a tester product", "Test");
+
+        for(Product product : results) {
+            LOG.info("Products findByDescriptionAndCategory: " + product.toString());
         }
 
+        List<String> names = new ArrayList<>();
+        names.add("Tester Product");
+        names.add("Another Tester Product");
 
+        List<Product> results2 = productRepository.findByCategoryAndNameIn("TEST", names);
+
+        for(Product product : results2) {
+            LOG.info("Products findByCategoryAndNameIn: " + product.toString());
+        }*/
+
+        Product productToUpdate= productRepository.findByType("SPECIFIC");
+        LOG.info("Price before update: " + productToUpdate.getPrice());
+        if(productToUpdate !=null){
+            productToUpdate.setPrice(50.50);
+        }
+
+        productRepository.save(productToUpdate);
+        LOG.info("Price after update: " + productToUpdate.getPrice());
+
+        // productRepository.delete(productToUpdate);
     }
 
 }

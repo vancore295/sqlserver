@@ -53,9 +53,9 @@ public class SqlserverApplication implements CommandLineRunner {
         product3.setType("SPECIFIC");
         product3.setPrice(19.0);
 
-/*        productRepository.save(product1);
+        productRepository.save(product1);
         productRepository.save(product2);
-        productRepository.save(product3);*/
+        productRepository.save(product3);
 
 /*        List<Product> products = productRepository.findAll();
         for(Product product : products) {

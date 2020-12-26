@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,13 @@ public class SqlserverApplication implements CommandLineRunner {
 
     private ProductRepository productRepository;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Bean
+    public RestTemplate setRestTemplate() {
+        return new RestTemplate();
+    }
 
     @Autowired
     public void productRepository(ProductRepository productRepository) {
@@ -31,7 +40,7 @@ public class SqlserverApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        Product product1 = new Product();
+/*        Product product1 = new Product();
         Product product2 = new Product();
 
         product1.setName("Tester Product");
@@ -55,7 +64,7 @@ public class SqlserverApplication implements CommandLineRunner {
 
         productRepository.save(product1);
         productRepository.save(product2);
-        productRepository.save(product3);
+        productRepository.save(product3);*/
 
 /*        List<Product> products = productRepository.findAll();
         for(Product product : products) {
@@ -79,7 +88,7 @@ public class SqlserverApplication implements CommandLineRunner {
 
         for(Product product : results2) {
             LOG.info("Products findByCategoryAndNameIn: " + product.toString());
-        }*/
+        }
 
         Product productToUpdate= productRepository.findByType("SPECIFIC");
         LOG.info("Price before update: " + productToUpdate.getPrice());
@@ -88,7 +97,7 @@ public class SqlserverApplication implements CommandLineRunner {
         }
 
         productRepository.save(productToUpdate);
-        LOG.info("Price after update: " + productToUpdate.getPrice());
+        LOG.info("Price after update: " + productToUpdate.getPrice());*/
 
         // productRepository.delete(productToUpdate);
     }

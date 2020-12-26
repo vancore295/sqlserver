@@ -40,6 +40,8 @@ public class SqlserverApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
+        Product productFromRestTemplate = restTemplate.getForObject("http://localhost:8000/api/products/" + "f27b7a66-f202-4814-b365-abcf541cad2f", Product.class);
+        LOG.info(productFromRestTemplate.toString());
 /*        Product product1 = new Product();
         Product product2 = new Product();
 
